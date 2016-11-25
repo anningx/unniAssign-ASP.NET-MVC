@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title </title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+        <link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/Scripts/jquery.dataTables.js")
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
+        <script>
+            $(function () {
+                $("#DateOfBirth").datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-85:-1"
+                });
+            });
+
+            $(document).ready(function () {
+                $('#data tbody tr:even').addClass("silver");
+                $('#data tbody tr').mouseover(function () {
+                    $(this).addClass('dataHover');
+                });
+                $('#data tbody tr').mouseout(function () {
+                    $(this).removeClass('dataHover');
+                });
+
+                $('#data').dataTable({
+                    "sDom": '<"nav"lf>t<"nav"i>',
+                    "oLanguage": { "sSearch": "Search by name: "}
+                });
+              
+                    $('#data').dataTable();
+                   
+            });
+            
+        </script>
+       
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+               
+                    <table id="headerTable">
+                        <tr>
+                            <td>
+                                <img src="@Url.Content("~/Images/logo.png")" />
+                            </td>
+                            <td>
+                                <h1 class="site-title">@Html.ActionLink("Monash Music Short-Course Agency", "Index", "Home")</h1>
+                            </td>
+                        </tr>
+                    </table>
+                <div id="navigation">
+
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Content", "Index", "Student")</li>
+                            <li>@Html.ActionLink("Course", "Index", "Course")</li>
+                            <li>@Html.ActionLink("Documentation", "Documentation", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+                
+            </div>
+        </header>
+        <div id="body">
+            
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year Monash Music Short-Course Agency</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </body>
+</html>

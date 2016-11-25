@@ -1,0 +1,26 @@
+﻿@model ass3.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Course</legend>
+    <table id="detail">
+        <tr>
+            <td class="detailLabel">Course ID</td>
+            <td>@Html.DisplayFor(model=>model.CourseID)</td>
+        </tr>
+        <tr>
+            <td class="detailLabel">Course Name</td>
+            <td>@Html.DisplayFor(model => model.CourseName)</td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

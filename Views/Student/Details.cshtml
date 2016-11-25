@@ -1,0 +1,79 @@
+﻿@model ass3.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Student</legend>
+    <table id="detail">
+        <tr>
+            <td width="20%" class="detailLabel">Student ID</td>
+            <td class="display-field">@Html.DisplayFor(model=>model.Id)</td>
+        </tr>
+        <tr>
+            <th width="20%" class="detailLabel">Name</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.Firstname)
+                @Html.DisplayFor(model => model.Lastname)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">Course</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.Course1.CourseName)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">Date of Birth</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">E-mail</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.E_mail)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">Mobile</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.Mobile)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">Address</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.Address)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">State</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.State)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20%" class="detailLabel">Postcode</th>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.Postcode)
+            </td>
+        </tr>
+
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
